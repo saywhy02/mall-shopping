@@ -1,0 +1,89 @@
+.head {
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	border-bottom: 1px solid #efefef;
+}
+.head .button {
+	width: 80%;
+	height: 3.5rem;
+	border: 1px solid #b2b2b2;
+	border-radius: 0.5rem;
+	color: #626262;
+	line-height: 3.5rem;
+	padding-left: 1rem;
+}
+#item-list {
+	width: 100%;
+	display: flex;
+}
+#left {
+	width: 8.6rem;
+	height: 92.3vh;
+	overflow: hidden;
+	margin-right: 3%;
+	z-index: 1;
+}
+#left li {
+	width: 100%;
+	height: 4rem;
+	border-bottom: 1px solid #efefef;
+	background-color: #fff;
+	text-align: center;
+	line-height: 4rem;
+}
+#left ul .active {
+	color: red;
+}
+.right {
+	width: 71%;
+	height: 92.3vh;
+	overflow: hidden;
+}
+.right .rolling {
+	width: 100%;
+}
+.right .goods-wrap {
+	width: 100%;
+	height: auto;
+}
+.right .goods-wrap .classify-name {
+	height: 3rem;
+	line-height: 3rem;
+}
+.right .goods-wrap .goods-items-wrap {
+	width: 100%;
+	background-color: #fff;
+	padding-top: 1rem;
+	overflow: hidden;
+}
+.right .goods-wrap .goods-items-wrap ul {
+	width: 32%;
+	float: left;
+	margin: 0 0.5%;
+	margin-bottom: 1rem;
+}
+.right .goods-wrap .goods-items-wrap ul li:first-child {
+	width: 7.5rem;
+	height: 7.5rem;
+	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
+}
+.right .goods-wrap .goods-items-wrap ul li:last-child {
+	width: 90%;
+	height: 4rem;
+	font-size: 1.2rem;
+	overflow: hidden;
+	text-align: center;
+	margin: 0 auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-top: 1rem;
+}
+img {
+	width: 100%;
+	height: 100%;
+}

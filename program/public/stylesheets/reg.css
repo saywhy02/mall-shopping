@@ -1,0 +1,145 @@
+.vip-reg {
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: #fff;
+	border-bottom: 1px solid #efefef;
+	z-index: 10;
+	padding: 0 0.5rem;
+	box-sizing: border-box;
+}
+.vip-reg .title {
+	position: absolute;
+	font-size: 1.6rem;
+	text-align: center;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.reg-main {
+	width: 100%;
+	padding-top: 7rem;
+}
+.code {
+	width: 90%;
+	border: 1px solid #efefef;
+	height: 4.2rem;
+	border-radius: 2px;
+	margin: 0 auto;
+	line-height: 4.2rem;
+	padding-left: 1rem;
+	box-sizing: border-box;
+	position: relative;
+}
+.code input {
+	width: 80%;
+	height: 80%;
+}
+.code .code-pic {
+	width: 20%;
+	height: 60%;
+	border-left: 1px solid #efefef;
+	position: absolute;
+	right: 0;
+	top: 20%;
+	text-align: center;
+}
+.SMS-code,
+.psw,
+.tel {
+	width: 90%;
+	height: 4.2rem;
+	margin: 0 auto;
+	border-radius: 2px;
+	border: 1px solid #efefef;
+	margin-top: 2rem;
+}
+.tel {
+	border: none;
+}
+.tel input {
+	width: 62%;
+	height: 100%;
+	padding-left: 1rem;
+	box-sizing: border-box;
+	border: 1px solid #efefef;
+	border-radius: 2px;
+}
+.tel button {
+	width: 35%;
+	height: 100%;
+	border: 1px solid #efefef;
+	color: #717376;
+	background-color: #efefef;
+}
+.tel .red {
+	background: #fff;
+	border: 1px solid #eb1625;
+	color: #eb1625;
+}
+.psw {
+	display: flex;
+	align-items: center;
+}
+.SMS-code input {
+	width: 100%;
+	height: 100%;
+	padding-left: 1rem;
+	box-sizing: border-box;
+}
+.psw input {
+	width: 80%;
+	height: 100%;
+	padding-left: 1rem;
+	box-sizing: border-box;
+}
+.psw .switch {
+	width: 20%;
+	height: 100%;
+}
+.psw .switch-van {
+	width: 6.2rem;
+	height: 3.2rem;
+	border: 1px solid #0000002a;
+	border-radius: 5rem;
+	margin-top: 0.4rem;
+	position: relative;
+	display: inline-block;
+	font-size: 3rem;
+}
+.psw .switch-van .node {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* right: 0; */
+	width: 3.2rem;
+	z-index: 1;
+	height: 3.2rem;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px 0 #000;
+	background-color: #fff;
+	transition: 0.3s;
+}
+.psw .switch-van .on {
+	transform: translateX(3rem);
+	transition: 0.3s;
+	box-shadow: 0 0px 3px 0 #ff0000;
+}
+.sub-btn {
+	width: 85%;
+	height: 4rem;
+	margin: 0 auto;
+	background: #eb1625;
+	font-size: 1.8rem;
+	color: #fff;
+	line-height: 4rem;
+	text-align: center;
+	margin-top: 2rem;
+	border-radius: 4px;
+}

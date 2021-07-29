@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>注册</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/reg.css" />
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/axios.js"></script>
+	</head>
+	<body>
+		<!-- 整个页面 -->
+		<div class="page">
+			<div class="load" style="display: none"></div>
+			<!-- 头部标题 -->
+			<header class="vip-reg">
+				<div class="back" onclick="back()"></div>
+				<div class="title">会员注册</div>
+			</header>
+
+			<!-- 注册主体 -->
+			<div class="reg-main">
+				<!-- 验证码 -->
+				<div class="code">
+					<input type="text" placeholder="验证码" />
+					<div class="code-pic">
+						<canvas
+							id="canvas"
+							width="54"
+							height="24"
+							style="border: 1px solid #000"
+							onclick="dj()"
+						></canvas>
+					</div>
+				</div>
+				<!-- 手机号 -->
+				<div class="tel">
+					<input
+						type="text"
+						placeholder="请输入手机号"
+						onkeyup="phone()"
+					/>
+					<button disabled>获取短信验证码</button>
+				</div>
+				<!-- 短信验证码 -->
+				<div class="SMS-code">
+					<input type="text" placeholder="请输入短信验证码" />
+				</div>
+				<!-- 密码 -->
+				<div class="psw">
+					<input type="password" placeholder="请输入密码" />
+					<div class="switch">
+						<div class="switch-van">
+							<div class="node"></div>
+						</div>
+					</div>
+
+					<script src="../javascripts/login.js"></script>
+				</div>
+				<div class="sub-btn">注册</div>
+				<script src="../javascripts/reg.js"></script>
+				<script src="../javascripts/jump.js"></script>
+			</div>
+		</div>
+	</body>
+</html>

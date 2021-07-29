@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>商城</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/foot.css" />
+		<link rel="stylesheet" href="../stylesheets/home.css" />
+		<link rel="stylesheet" href="../stylesheets/swiper-bundle.min.css" />
+		<link rel="stylesheet" href="../stylesheets/mine.css" />
+		<link rel="stylesheet" href="../stylesheets/shopCar.css" />
+		<script src="../javascripts/swiper-bundle.min.js"></script>
+		<script src="../javascripts/axios.js"></script>
+		<script src="../javascripts/jquery3.3.1.js"></script>
+	</head>
+	<body>
+		<!-- 首页开始 -->
+		<div class="con">
+			<!-- 搜索栏 -->
+			<header class="head">
+				<i onclick="jump('./02item.html')"></i>
+				<button class="button"><b></b>请输入宝贝名称</button>
+				<span>登录</span>
+			</header>
+			<!-- 轮播图 -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper"></div>
+				<!-- 如果需要分页器 -->
+				<div class="swiper-pagination"></div>
+			</div>
+			<!-- 中心导航 -->
+			<div class="nav-center"></div>
+			<!-- 物品 -->
+			<div class="goods"></div>
+			<!-- 为您推荐 -->
+			<div class="goods-recommend-top">
+				<div class="line"></div>
+				<div class="cont-wrap">
+					<div class="icon"></div>
+					<div class="text">为您推荐</div>
+				</div>
+				<div class="line"></div>
+			</div>
+			<div class="goods-recommends"></div>
+			<!-- 底部留白 -->
+			<div class="raise"></div>
+		</div>
+		<!-- 首页结束 -->
+
+		<!-- 购物车开始 -->
+		<div class="con">
+			<div class="cart-head">
+				<div class="back hide" onclick="back()"></div>
+				<div class="title">购物车</div>
+			</div>
+			<div class="cart-main"></div>
+
+			<div class="shopCar">
+				<div class="pay-the-bill">
+					<div class="chose-all">
+						<div class="chose-btn"></div>
+						<div class="chose-text">全选</div>
+					</div>
+					<div class="total">运费：<span>￥0</span> 合计：<span>￥0</span></div>
+				</div>
+				<div class="settlement-btn disable">去结算</div>
+			</div>
+		</div>
+		<!-- 购物车结束 -->
+
+		<!-- 我的开始 -->
+		<div class="con">
+			<header class="personal">
+				<div class="back hide" onclick="back()"></div>
+				<div class="title">个人中心</div>
+			</header>
+			<div class="user-msg">
+				<div class="head-pic">
+					<img src="../images/user/my/default-head.png" alt="" />
+				</div>
+				<div class="nickname">昵称</div>
+				<div class="integral">我的积分：0</div>
+			</div>
+			<div class="order">
+				<div class="all-order">全部订单</div>
+				<div class="show-order">查看全部订单&gt;</div>
+			</div>
+			<div class="order-status">
+				<div class="item">
+					<div class="icon pay"></div>
+					<div class="text">待支付</div>
+				</div>
+				<div class="item">
+					<div class="icon receipt"></div>
+					<div class="text">待收货</div>
+				</div>
+				<div class="item">
+					<div class="icon evaluation"></div>
+					<div class="text">待评价</div>
+				</div>
+			</div>
+			<div class="my-menu-list">
+				<div class="list">
+					<div class="list-text">个人资料</div>
+					<div class="right"></div>
+				</div>
+				<div class="list">
+					<div class="list-text">收货地址</div>
+					<div class="right"></div>
+				</div>
+				<div class="list">
+					<div class="list-text">绑定手机</div>
+					<div class="right"></div>
+				</div>
+				<div class="list">
+					<div class="list-text">修改密码</div>
+					<div class="right"></div>
+				</div>
+				<div class="list">
+					<div class="list-text">我的收藏</div>
+					<div class="right"></div>
+				</div>
+				<button class="btn">登录/注册</button>
+			</div>
+			<!-- <div class="raise"></div> -->
+		</div>
+		<!-- 我的结束 -->
+
+		<!-- 底部开始 -->
+		<footer>
+			<ul id="tab">
+				<li><i></i>首页</li>
+				<li>
+					<div class="dot hide"></div>
+					<i></i>购物车
+				</li>
+				<li><i></i>我的</li>
+			</ul>
+		</footer>
+
+		<!-- 搜索 -->
+		<div class="search-component hide">
+			<div class="search-header">
+				<div class="close"></div>
+				<div class="search-wrap">
+					<div class="search-input-wrap">
+						<input type="text" placeholder="请输入宝贝名称" class="search" />
+					</div>
+					<button class="search-btn"></button>
+				</div>
+			</div>
+			<div class="search-main hide">
+				<div class="search-title-wrap">
+					<div class="search-title">最近搜索</div>
+					<div class="bin"></div>
+				</div>
+				<div class="search-keywords-wrap"></div>
+			</div>
+			<div class="search-main top">
+				<div class="search-title-wrap">
+					<div class="search-title">热门搜索</div>
+				</div>
+				<div class="search-keywords-wrap"></div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="van-dialog">
+			<div class="van-dialog__content">
+				<div class="van-dialog__message">确认要删除吗？</div>
+			</div>
+			<div class="van-hairline">
+				<button class="van-button">取消</button>
+				<button class="van-button">确认</button>
+			</div>
+		</div>
+		<!-- 底部结束 -->
+		<!-- js 文件 -->
+		<script src="../javascripts/cart.js"></script>
+		<script src="../javascripts/search.js"></script>
+		<script src="../javascripts/home.js"></script>
+		<script src="../javascripts/mine.js"></script>
+		<script src="../javascripts/foot.js"></script>
+		<script src="../javascripts/jump.js"></script>
+	</body>
+</html>

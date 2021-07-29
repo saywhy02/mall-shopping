@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>商品分类</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/itemList.css" />
+		<script src="../javascripts/axios.js"></script>
+	</head>
+	<body>
+		<header class="head">
+			<i class="back" onclick="back()"></i>
+			<div class="button">请输入宝贝名称</div>
+		</header>
+		<div id="item-list">
+			<div id="left">
+				<ul></ul>
+			</div>
+			<div class="right">
+				<div class="rolling">
+					<div class="goods-all hide" style="display: block"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 搜索 -->
+		<div class="search-component hide">
+			<div class="search-header">
+				<div class="close"></div>
+				<div class="search-wrap">
+					<div class="search-input-wrap">
+						<input type="text" placeholder="请输入宝贝名称" class="search" />
+					</div>
+					<button class="search-btn"></button>
+				</div>
+			</div>
+			<div class="search-main hide">
+				<div class="search-title-wrap">
+					<div class="search-title">最近搜索</div>
+					<div class="bin"></div>
+				</div>
+				<div class="search-keywords-wrap"></div>
+			</div>
+			<div class="search-main top">
+				<div class="search-title-wrap">
+					<div class="search-title">热门搜索</div>
+				</div>
+				<div class="search-keywords-wrap"></div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="van-dialog">
+			<div class="van-dialog__content">
+				<div class="van-dialog__message">确认要删除吗？</div>
+			</div>
+			<div class="van-hairline">
+				<button class="van-button">取消</button>
+				<button class="van-button">确认</button>
+			</div>
+		</div>
+		<script src="../javascripts/itemList.js"></script>
+		<script src="../javascripts/jump.js"></script>
+		<script src="../javascripts/better-scroll.js"></script>
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/search.js"></script>
+	</body>
+</html>

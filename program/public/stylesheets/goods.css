@@ -1,0 +1,241 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #f2f2f2;
+}
+ul li {
+	list-style-type: none;
+}
+.head {
+	width: 100%;
+	height: 6vh;
+	background-color: #fff;
+	border-bottom: 1px solid #f2f2f2;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+}
+.head i {
+	display: block;
+	width: 5vh;
+	height: 5vh;
+	background: url(../images/home/goods/back.png) no-repeat;
+	background-size: 100% 100%;
+}
+.head input {
+	border: none;
+	outline: none;
+	width: 70%;
+	height: 5vh;
+	padding-left: 5.5vh;
+	box-sizing: border-box;
+	font-size: 2.5vh;
+	border-radius: 1vh;
+	background: #efefef url(../images/common/search.png) no-repeat 1vh;
+	background-size: auto 80%;
+}
+#sort {
+	width: 100%;
+	position: fixed;
+	top: 6vh;
+	background-color: #fff;
+	z-index: 2;
+}
+#sort p {
+	border-bottom: 1px solid #f2f2f2;
+	line-height: 6vh;
+	display: flex;
+}
+#sort p span {
+	display: flex;
+	align-items: center;
+	margin-left: 3vh;
+}
+#sort p i {
+	display: inline-block;
+	width: 3vh;
+	height: 3vh;
+	background: url(../images/home/goods/down.png) no-repeat;
+	background-size: 100% auto;
+}
+#sort ul li {
+	line-height: 6vh;
+	text-indent: 3vh;
+	border-bottom: 1px solid #f2f2f2;
+	display: none;
+}
+
+#wares {
+	margin-top: 12vh;
+	background-color: #fff;
+}
+#wares ul {
+	width: 100%;
+	padding-top: 3vh;
+	display: flex;
+	justify-content: space-between;
+}
+#wares ul li img {
+	width: 15vh;
+	height: 15vh;
+	margin-left: 1vh;
+	border: 1px solid #f2f2;
+}
+#wares ul li .title {
+	width: 100%;
+	font-size: 2vh;
+	height: 5vh;
+}
+#wares ul li:nth-child(2) {
+	width: 65%;
+	border-bottom: 1px solid #ccc;
+}
+#wares ul li:nth-child(2) .price {
+	color: #f93036;
+	display: block;
+	margin: 1vh 0;
+}
+#wares ul li:nth-child(2) .sales {
+	font-size: 1vh;
+	color: #777;
+	/* line-height: 2vh; */
+}
+#wares ul li:nth-child(2) .sales span {
+	color: #fda208;
+}
+.active {
+	color: #fda208;
+}
+
+/* 筛选 */
+#screen {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: space-between;
+	background: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	z-index: 3;
+}
+#screen .no {
+	width: 20%;
+	height: 100%;
+}
+#menus {
+	background-color: #fff;
+	width: 80%;
+	height: 100%;
+	overflow: auto;
+	position: relative;
+	right: -80%;
+}
+#menus i {
+	display: block;
+	width: 2.5vh;
+	height: 2.5vh;
+	background: url(../images/home/goods/down.png) no-repeat;
+	background-size: 100% auto;
+}
+#menus ul li {
+	font-size: 2vh;
+}
+#menus .category {
+	width: 100%;
+	border-bottom: 1px solid #f2f2f2;
+}
+#menus .category p {
+	font-size: 2.5vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2vh 1vh;
+}
+
+#menus ul {
+	width: 100%;
+	overflow: hidden;
+}
+#menus ul li {
+	float: left;
+	width: 30%;
+	height: 32px;
+	line-height: 32px;
+	background-color: #eee;
+	margin: 0 0.7vh 1.5vh;
+	text-align: center;
+	border-radius: 1vh;
+}
+/* 点击变色 */
+#menus .bgc {
+	background: #fda208;
+	color: #fff;
+}
+/* 价格区间 */
+#section {
+	width: 100%;
+	border-bottom: 2.5vh solid #f2f2f2;
+}
+#section .write {
+	display: flex;
+	padding: 0 2vh;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1vh 0 2vh;
+}
+#section .write p {
+	color: #efefef;
+}
+#section .write input {
+	width: 8vh;
+	border: 1px solid #ccc;
+	outline: none;
+	border-right: none;
+}
+
+/* 品牌和热点 */
+#brand-hot {
+	width: 100%;
+	border-bottom: 1px solid #f2f2f2;
+}
+#brand-hot p {
+	display: flex;
+	margin: 1vh 0 2vh;
+	padding: 0 1vh;
+	justify-content: space-between;
+	align-items: center;
+}
+/* 底部设置 */
+#menus .bottom {
+	display: flex;
+	width: 80%;
+	height: 8vh;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid #f2f2f2;
+	position: fixed;
+	bottom: 0;
+	z-index: 3;
+	background-color: #fff;
+}
+#menus .bottom p {
+	width: 33.3%;
+	height: 100%;
+	line-height: 8vh;
+	text-align: center;
+}
+#menus .bottom p span {
+	color: #fda208;
+}
+#menus .bottom p:nth-child(2) {
+	background-color: #eee;
+}
+#menus .bottom p:nth-child(3) {
+	background-color: #fda208;
+	color: #fff;
+}
