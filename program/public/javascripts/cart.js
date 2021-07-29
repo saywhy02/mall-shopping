@@ -1,32 +1,26 @@
+var amount = [];
 $(function () {
-	if (localStorage.getItem("cartNum") != null) {
-		axios
-			.get(
-				"http://vueshop.glbuys.com/api/home/goods/info?gid=" +
-					localStorage.getItem("gid") +
-					"&type=details&token=1ec949a15fb709370f"
-			)
-			.then((res) => {
-				var cartData = JSON.parse(localStorage.getItem("cartData"));
-				var cartMain = document.querySelector(".cart-main");
-				console.log(res.data.data);
-				cartMain.innerHTML = `
+	if (localStorage.getItem("cartData") != null) {
+		var cartData = JSON.parse(localStorage.getItem("cartData"));
+		var cartMain = document.querySelector(".cart-main");
+		for (let i = 0; i < cartData.length; i++) {
+			cartMain.innerHTML += `
             <div class="cart-list">
-                <div class="select-btn"></div>
+                <div class="select-btn active"></div>
                 <div class="image-wrap">
                     <div class="image">
                         <img
-                            src="${res.data.data.images[0]}"
+                            src="${cartData[i].image}"
                         />
                     </div>
                     <div class="del">删除</div>
                 </div>
                 <div class="goods-wrap">
-                    <div class="goods-title">${res.data.data.title}</div>
+                    <div class="goods-title">${cartData[i].title}</div>
                     <div class="goods-attr">
                     </div>
                     <div class="buy-wrap">
-                        <div class="price">￥${res.data.data.price}</div>
+                        <div class="price">￥${cartData[i].price}</div>
                         <div class="amount-input-wrap">
                             <div class="btn dec active">-</div>
                             <div class="amount-input">
@@ -37,38 +31,56 @@ $(function () {
                     </div>
                 </div>
             </div>
-        `;
-				var gAttr = document.querySelector(".goods-attr");
-				for (let key in cartData) {
-					gAttr.innerHTML += `
-                    <span>${key + "：" + cartData[key]}</span>
-                `;
+            `;
+		}
+		for (let i = 0; i < cartData.length; i++) {
+			var gAttr = document.querySelectorAll(".goods-attr");
+			var keyName = Object.keys(cartData[i]);
+			var value = Object.values(cartData[i]);
+			for (let key = 4; key < keyName.length - 1; key++) {
+				gAttr[i].innerHTML += `
+                    <span>${keyName[key] + "：" + value[key]}</span>
+				`;
+			}
+			// 输入框
+			amount[i] = cartData[i].amount;
+			$(".amount-input input").val(amount[i]);
+			$(".amount-input input").bind("input", function (ev) {
+				if ($(".amount-input input").val() < 1) {
+					amount[i] = 1;
+					$(".dec").add("active");
+					$(".amount-input input").val(amount[i]);
 				}
-				// 输入框
-				amount = localStorage.getItem("amount");
-				$(".amount-input input").val(amount);
-				$(".amount-input input").bind("input", function (ev) {
-					if ($(".amount-input input").val() < 1) {
-						amount = 1;
-						$(".amount-input input").val(amount);
-					}
-					amount = $(".amount-input input").val();
-				});
-				// 减
-				$(".dec").click(function () {
-					if (amount > 1) {
-						amount--;
-						$(".amount-input input").val(amount);
-					} else {
-						amount = 1;
-						$(".amount-input input").val(amount);
-					}
-				});
-				// 加
-				$(".inc").click(function () {
-					amount++;
-					$(".amount-input input").val(amount);
-				});
+
+				amount[i] = $(".amount-input input").val();
 			});
+		}
+
+		for (let i = 0; i < cartData.length; i++) {
+			// 减
+			$(".dec")
+				.eq(i)
+				.click(function () {
+					if (amount[i] <= 1) {
+						amount[i] = 1;
+						$(".amount-input input").eq(i).val(amount[i]);
+					} else {
+						amount[i]--;
+						$(".amount-input input").eq(i).val(amount[i]);
+					}
+				});
+		}
+		for (let i = 0; i < cartData.length; i++) {
+			// 加
+			$(".inc")
+				.eq(i)
+				.click(function () {
+					amount[i]++;
+					$(".amount-input input").eq(i).val(amount[i]);
+				});
+		}
+		for (let i = 0; i < cartData.length; i++) {
+			$();
+		}
 	}
 });

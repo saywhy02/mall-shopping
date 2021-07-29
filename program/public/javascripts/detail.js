@@ -1,3 +1,6 @@
+var attr = {}; // 存放颜色值等
+var sttr = {}; // 存放颜色标题
+// 顶部选项
 $().ready(function () {
 	$(".detail-tab .tab-name").click(function () {
 		var _index = $(this).index();
@@ -6,6 +9,16 @@ $().ready(function () {
 	});
 });
 
+// 购物车的点
+window.onload = function () {
+	if (localStorage.getItem("cartData") != null) {
+		$(".cart-icon .dot").show();
+	} else {
+		$(".cart-icon .dot").hide();
+	}
+};
+
+// 轮播图
 var mySwiper = new Swiper(".swiper-container", {
 	autoplay: true,
 	speed: 200,
@@ -25,6 +38,7 @@ var mySwiper = new Swiper(".swiper-container", {
 		mySwiper.reLoop();
 	},
 });
+// 物品接口
 axios
 	.get(
 		"http://vueshop.glbuys.com/api/home/goods/info?gid=" +
@@ -69,6 +83,10 @@ axios
             <div class="price">¥${res.data.data.price}</div>
             <div class="goods-code">商品编码:${res.data.data.gid}</div>
         `;
+		attr.image = res.data.data.images[0];
+		attr.title = res.data.data.title;
+		attr.price = res.data.data.price;
+		attr.freight = res.data.data.freight;
 	});
 // 评价
 axios
@@ -122,7 +140,6 @@ axios
 							(j + 1)
 					)
 					.then((response) => {
-						// console.log(response.data);
 						rWall.innerHTML += response.data.data
 							.map((v, i) => {
 								return `
@@ -150,9 +167,6 @@ axios
 			}
 		}
 	});
-
-var attr = {}; // 存放颜色值等
-var sttr = {}; // 存放颜色标题
 // 颜色
 axios
 	.get(
@@ -161,7 +175,6 @@ axios
 			"&type=spec&token=1ec949a15fb709370f"
 	)
 	.then((res) => {
-		console.log(res.data);
 		var attrWrap = document.querySelector(".attr-wrap");
 		// 颜色 尺寸
 		attrWrap.innerHTML = res.data.data
@@ -187,10 +200,10 @@ axios
 				})
 				.join("");
 		}
-		if (sttr.length == 1) {
-			attr[0] = 1;
+		if (res.data.data.length == 1) {
+			attr[1] = 1;
 		}
-		if (sttr.length > 2) {
+		if (res.data.data.length > 2) {
 			attr[2] = 1;
 		}
 		$(".val-wrap .val").click(function () {
@@ -204,7 +217,6 @@ axios
 			} else if (_index == 2) {
 				attr[sttr[2]] = res.data.data[_index].values[_indexChild].value;
 			}
-			console.log(attr);
 		});
 	});
 // 加入购物车
@@ -265,21 +277,33 @@ $(".inc").click(function () {
 	$(".amount-input input").val(amount);
 });
 // 确定
-var num = 0;
 $(".sure-btn").click(function () {
 	if (attr[sttr[0]] == null) {
+		console.log(111);
 		textTip("请选择" + sttr[0], 1000);
-	} else if (attr[sttr[1]] == null && attr[0] != 1) {
+	} else if (attr[sttr[1]] == null && attr[1] != 1) {
+		console.log(222);
 		textTip("请选择" + sttr[1], 1000);
 	} else if (attr[sttr[2]] == null && attr[2] == 1) {
+		console.log(333);
 		textTip("请选择" + sttr[2], 1000);
 	} else {
 		textTip("加入购物车成功", 1000);
 		$(".cart-icon .dot").show();
-		localStorage.setItem("cartData", JSON.stringify(attr));
-		localStorage.setItem("amount", amount);
-		num++;
-		localStorage.setItem("cartNum", num);
+
+		let attrs = [];
+		if ("cartData" in localStorage) {
+			try {
+				attrs = JSON.parse(localStorage.getItem("cartData"));
+			} catch (error) {
+				attrs = localStorage.getItem("cartData");
+			}
+		} else {
+			attrs = [];
+		}
+		attr.amount = amount;
+		attrs.push(attr);
+		localStorage.setItem("cartData", JSON.stringify(attrs));
 	}
 });
 // 购物车

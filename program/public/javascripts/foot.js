@@ -26,7 +26,7 @@ function chose(id) {
 		oli[now].className = "active";
 		ocon[now].style.display = "block";
 	}
-	if (localStorage.getItem("cartNum") != null) {
+	if (localStorage.getItem("cartData") != null) {
 		$("#tab .dot").show().css({ top: 0 });
 	} else {
 		$("#tab .dot").hide();
