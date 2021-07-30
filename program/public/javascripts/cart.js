@@ -20,7 +20,7 @@ $(function () {
                     <div class="goods-attr">
                     </div>
                     <div class="buy-wrap">
-                        <div class="price">￥${cartData[i].price}</div>
+                        <div class="price">￥<b>${cartData[i].price}</b></div>
                         <div class="amount-input-wrap">
                             <div class="btn dec active">-</div>
                             <div class="amount-input">
@@ -68,6 +68,7 @@ $(function () {
 						amount[i]--;
 						$(".amount-input input").eq(i).val(amount[i]);
 					}
+					totals();
 				});
 		}
 		for (let i = 0; i < cartData.length; i++) {
@@ -77,10 +78,74 @@ $(function () {
 				.click(function () {
 					amount[i]++;
 					$(".amount-input input").eq(i).val(amount[i]);
+					totals();
 				});
 		}
-		for (let i = 0; i < cartData.length; i++) {
-			$();
-		}
+		totals();
+		$(".cart-list").each(function (i) {
+			let temp = 0;
+			$(this).click(() => {
+				if (temp == 0) {
+					$(this).removeClass("active");
+					temp = 1;
+				} else {
+					$(this).addClass("active");
+					temp = 0;
+				}
+				totals();
+			});
+			$(".chose-all").click(() => {
+				if (temp == 0) {
+					$(".chose-btn").removeClass("active");
+					$(".select-btn").removeClass("active");
+					temp = 1;
+				} else {
+					$(".chose-btn").addClass("active");
+					$(".select-btn").addClass("active");
+					temp = 0;
+				}
+				totals();
+			});
+			$(".del")
+				.eq(i)
+				.click(function () {
+					$(".cart-list").eq(i).remove();
+					totals();
+					cartData.splice(i, 1);
+					if (cartData.length != 0) {
+						cartData = JSON.stringify(cartData);
+						localStorage.setItem("cartData", cartData);
+					} else {
+						localStorage.removeItem("cartData");
+						location.reload();
+					}
+				});
+		});
 	}
 });
+function totals() {
+	let bss = 0;
+	if (!$(".select-btn").hasClass("active")) {
+		bss = 0;
+		$("#settlement").html("￥" + bss.toFixed(1));
+	} else {
+		$(".cart-list").each(function (i) {
+			if ($(".select-btn").eq(i).hasClass("active")) {
+				let t = $(".amount-input input").eq(i).val();
+				let p = $(".price b").eq(i).text();
+				bss += parseInt(t) * parseFloat(p);
+			}
+			if ($(".select-btn.active").length == $(".cart-list").length) {
+				$(".chose-btn").addClass("active");
+			} else {
+				$(".chose-btn").removeClass("active");
+			}
+			if ($(".select-btn.active").length >= 1) {
+				$(".settlement-btn").removeClass("disable");
+			} else {
+				$(".settlement-btn").addClass("disable");
+			}
+		});
+		$("#settlement").html("￥" + bss.toFixed(1));
+	}
+}

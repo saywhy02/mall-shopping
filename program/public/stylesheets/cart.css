@@ -28,6 +28,13 @@
 	margin-left: 1rem;
 	margin-right: 0.5rem;
 }
+
+.shopCar .pay-the-bill .chose-all .chose-btn.active {
+	background: url("../images/home/cart/checkmark.png") no-repeat center;
+	background-size: 100%;
+	border: 1px solid #fff;
+}
+
 .shopCar .pay-the-bill .chose-all .chose-text {
 	font-size: 1.2rem;
 }
