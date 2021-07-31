@@ -1,4 +1,5 @@
 var amount = [];
+var freight = [];
 $(function () {
 	if (localStorage.getItem("cartData") != null) {
 		var cartData = JSON.parse(localStorage.getItem("cartData"));
@@ -32,12 +33,13 @@ $(function () {
                 </div>
             </div>
             `;
+			freight.push(cartData[i].freight);
 		}
 		for (let i = 0; i < cartData.length; i++) {
 			var gAttr = document.querySelectorAll(".goods-attr");
 			var keyName = Object.keys(cartData[i]);
 			var value = Object.values(cartData[i]);
-			for (let key = 4; key < keyName.length - 1; key++) {
+			for (let key = 5; key < keyName.length - 1; key++) {
 				gAttr[i].innerHTML += `
                     <span>${keyName[key] + "：" + value[key]}</span>
 				`;
@@ -82,27 +84,31 @@ $(function () {
 				});
 		}
 		totals();
-		$(".cart-list").each(function (i) {
-			let temp = 0;
+		$(".select-btn").each(function (i) {
+			let temp = true;
 			$(this).click(() => {
-				if (temp == 0) {
+				if (temp == true) {
 					$(this).removeClass("active");
-					temp = 1;
+					$("#freight").html("￥" + 0);
+					temp = !temp;
 				} else {
 					$(this).addClass("active");
-					temp = 0;
+					$("#freight").html("￥" + Math.min.apply(null, freight));
+					temp = !temp;
 				}
 				totals();
 			});
 			$(".chose-all").click(() => {
-				if (temp == 0) {
+				if (temp == true) {
 					$(".chose-btn").removeClass("active");
 					$(".select-btn").removeClass("active");
-					temp = 1;
+					$("#freight").html("￥" + 0);
+					temp = !temp;
 				} else {
 					$(".chose-btn").addClass("active");
 					$(".select-btn").addClass("active");
-					temp = 0;
+					$("#freight").html("￥" + Math.min.apply(null, freight));
+					temp = !temp;
 				}
 				totals();
 			});
@@ -120,6 +126,11 @@ $(function () {
 						location.reload();
 					}
 				});
+			$(".settlement-btn").click(() => {
+				if (!$(".settlement-btn").hasClass("disable")) {
+					jump();
+				}
+			});
 		});
 	}
 });
@@ -128,24 +139,24 @@ function totals() {
 	if (!$(".select-btn").hasClass("active")) {
 		bss = 0;
 		$("#settlement").html("￥" + bss.toFixed(1));
+		$("#freight").html("￥" + 0);
+		$(".chose-btn").removeClass("active");
+		$(".settlement-btn").addClass("disable");
 	} else {
-		$(".cart-list").each(function (i) {
+		$(".select-btn").each(function (i) {
 			if ($(".select-btn").eq(i).hasClass("active")) {
-				let t = $(".amount-input input").eq(i).val();
-				let p = $(".price b").eq(i).text();
-				bss += parseInt(t) * parseFloat(p);
+				let num = $(".amount-input input").eq(i).val();
+				let price = $(".price b").eq(i).text();
+				bss += parseInt(num) * parseFloat(price);
 			}
 			if ($(".select-btn.active").length == $(".cart-list").length) {
 				$(".chose-btn").addClass("active");
 			} else {
 				$(".chose-btn").removeClass("active");
 			}
-			if ($(".select-btn.active").length >= 1) {
-				$(".settlement-btn").removeClass("disable");
-			} else {
-				$(".settlement-btn").addClass("disable");
-			}
 		});
+		$(".settlement-btn").removeClass("disable");
 		$("#settlement").html("￥" + bss.toFixed(1));
+		$("#freight").html("￥" + Math.min.apply(null, freight));
 	}
 }

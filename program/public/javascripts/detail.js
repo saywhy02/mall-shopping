@@ -83,6 +83,7 @@ axios
             <div class="price">¥${res.data.data.price}</div>
             <div class="goods-code">商品编码:${res.data.data.gid}</div>
         `;
+		attr.gid = res.data.data.gid;
 		attr.image = res.data.data.images[0];
 		attr.title = res.data.data.title;
 		attr.price = res.data.data.price;
@@ -201,10 +202,10 @@ axios
 				.join("");
 		}
 		if (res.data.data.length == 1) {
-			attr[1] = 1;
+			sttr[100] = 1;
 		}
 		if (res.data.data.length > 2) {
-			attr[2] = 1;
+			sttr[101] = 1;
 		}
 		$(".val-wrap .val").click(function () {
 			var _index = $(this).parents(".attr-list").index();
@@ -226,22 +227,7 @@ $(".cart").click(function () {
 });
 
 // 收藏
-let count = 0;
-var arr = [];
-$(".fav").click(function () {
-	if (localStorage.getItem("isLogin") == "true") {
-		if (arr[count - 1] != localStorage.getItem("gid")) {
-			arr.push(localStorage.getItem("gid"));
-			textTip("收藏成功！");
-			count++;
-		} else {
-			textTip("已收藏！");
-		}
-		localStorage.setItem("fav", JSON.stringify(arr));
-	} else {
-		jump("../html/03login.html");
-	}
-});
+
 // 关闭
 $(".close").click(function () {
 	$(".overlay").hide();
@@ -281,10 +267,10 @@ $(".sure-btn").click(function () {
 	if (attr[sttr[0]] == null) {
 		console.log(111);
 		textTip("请选择" + sttr[0], 1000);
-	} else if (attr[sttr[1]] == null && attr[1] != 1) {
+	} else if (attr[sttr[1]] == null && sttr[100] != 1) {
 		console.log(222);
 		textTip("请选择" + sttr[1], 1000);
-	} else if (attr[sttr[2]] == null && attr[2] == 1) {
+	} else if (attr[sttr[2]] == null && sttr[101] == 1) {
 		console.log(333);
 		textTip("请选择" + sttr[2], 1000);
 	} else {
@@ -309,5 +295,5 @@ $(".sure-btn").click(function () {
 // 购物车
 $(".cart-icon").click(function () {
 	localStorage.setItem("li", 1);
-	jump("../html/01index.html");
+	jump("../html/index.html");
 });

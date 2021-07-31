@@ -51,7 +51,7 @@ axios.get("/nav").then((res) => {
 		for (let i = 0; i < navNet.length; i++) {
 			navNet[i].onclick = () => {
 				localStorage.setItem("navNet", i);
-				jump("../html/02item.html");
+				jump("../html/item.html");
 			};
 		}
 	}
@@ -186,11 +186,7 @@ axios.get("/goods").then((res) => {
 	}
 	var goodsRow2 = document.querySelectorAll(".goods-row-2");
 	for (let i = 0; i < goodsRow2.length; i++) {
-		for (
-			let j = data.ids[i].items.length - 4;
-			j < data.ids[i].items.length;
-			j++
-		) {
+		for (let j = data.ids[i].items.length - 4; j < data.ids[i].items.length; j++) {
 			goodsRow2[i].innerHTML += `
             <div class="goods-list into">
                 <div class="goods-title">
@@ -215,7 +211,7 @@ axios.get("/goods").then((res) => {
 	for (let x = 0; x < arr.length; x++) {
 		into[x].onclick = () => {
 			localStorage.setItem("gid", arr[x], 30);
-			location.href = "../html/06detail.html";
+			location.href = "../html/detail.html";
 		};
 	}
 });
@@ -239,15 +235,14 @@ axios.get("/recommend").then((res) => {
 	for (let x = 0; x < res.data.ids.length; x++) {
 		intoOf[x].onclick = function () {
 			localStorage.setItem("gid", res.data.ids[x].gid, 30);
-			location.href = "../html/06detail.html";
+			location.href = "../html/detail.html";
 		};
 	}
 });
 
 window.onscroll = function () {
 	var head = document.getElementsByTagName("header")[0];
-	var getScrollTop =
-		document.body.scrollTop || document.documentElement.scrollTop;
+	var getScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 	if (getScrollTop < 150) {
 		head.className = "head";
 	} else {

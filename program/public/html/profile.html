@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>个人资料</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/address.css" />
+		<link rel="stylesheet" href="../stylesheets/profile.css" />
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/axios.js"></script>
+	</head>
+	<body>
+		<div class="myData">
+			<div class="personal">
+				<div class="back" onclick="back()"></div>
+				<span class="title">个人资料</span>
+				<a href="JavaScript:;" class="right-btn">保存</a>
+			</div>
+			<div class="main">
+				<ul class="head">
+					<li>头像</li>
+					<li>
+						<img src="../images/user/my/default-head.png" alt="" /><input type="file" />
+					</li>
+				</ul>
+				<ul class="list">
+					<li>昵称</li>
+					<li>
+						<input type="text" placeholder="请设置昵称" class="nickname" />
+					</li>
+					<li class="arrow"></li>
+				</ul>
+				<ul class="list">
+					<li>性别</li>
+					<li><input type="text" placeholder="请设置性别" class="gender" /></li>
+					<li class="arrow"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="van-popup">
+			<div class="van-action-sheet__header">
+				请选择性别
+				<i class="van-icon"></i>
+			</div>
+			<button class="van-action-sheet">男</button>
+			<button class="van-action-sheet">女</button>
+			<button class="van-action-cancel">取消</button>
+		</div>
+		<script src="../javascripts/profile.js"></script>
+		<script src="../javascripts/jump.js"></script>
+	</body>
+</html>

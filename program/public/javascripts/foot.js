@@ -42,7 +42,7 @@ function chose(id) {
 			oli[now].className = "active";
 			ocon[now].style.display = "block";
 		} else {
-			jump("../html/03login.html");
+			jump("../html/login.html");
 		}
 	};
 }

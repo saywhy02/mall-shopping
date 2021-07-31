@@ -193,9 +193,7 @@ function picCode() {
 	if (code.length <= 0) {
 		textTip("请输入图文验证码");
 		return false;
-	} else if (
-		code.toUpperCase() != checkCode.join("").toString().toUpperCase()
-	) {
+	} else if (code.toUpperCase() != checkCode.join("").toString().toUpperCase()) {
 		textTip("您输入的图文验证码不正确", 1000, function () {
 			dj();
 		});
@@ -222,7 +220,7 @@ $(".sub-btn").click(function () {
 				SMS();
 			} else {
 				textTip("注册成功！", 1000, function () {
-					jump("../html/03login.html");
+					jump("../html/login.html");
 				});
 			}
 		},

@@ -1,0 +1,146 @@
+.myData {
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #fff;
+	z-index: 10;
+}
+.main .head {
+	margin-top: 7vh;
+	width: 100%;
+	height: 8vh;
+	border-bottom: 1px solid #efefef;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.main .head li:first-child {
+	font-size: 2.2vh;
+	margin-left: 5%;
+}
+
+.main .head li:nth-child(2) {
+	width: 7vh;
+	height: 7vh;
+	margin-right: 10%;
+	position: relative;
+	z-index: 1;
+}
+
+.main .head li:nth-child(2) img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.main .head li:nth-child(2) input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.main .list {
+	width: 100%;
+	height: 6vh;
+	border-bottom: 1px solid #efefef;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 2.2vh;
+}
+
+.main .list li:first-child {
+	margin-left: 5%;
+}
+
+.main .list li:nth-child(2) {
+	width: 50%;
+	height: 100%;
+	margin-left: 20%;
+}
+
+.main .list li:nth-child(2) input {
+	width: 100%;
+	height: 90%;
+	text-align: right;
+	font-size: 0.28rem;
+	color: inherit;
+	font: inherit;
+	border: 0 none;
+	border-radius: 0;
+	outline: none;
+}
+
+.main .list .arrow {
+	width: 3vh;
+	height: 3vh;
+	background-image: url(../images/home/goods/down3.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	margin-right: 3%;
+}
+.van-action-sheet,
+.van-action-cancel {
+	display: block;
+	width: 100%;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: center;
+	background-color: #fff;
+	border: 0;
+}
+.van-action-sheet {
+	border-top: 1px solid #f8f9fa;
+}
+.van-popup {
+	position: fixed;
+	width: 100%;
+	overflow-y: auto;
+	background-color: #fff;
+	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+	border-radius: 20px 20px 0 0;
+	z-index: 201;
+	bottom: 0;
+	box-sizing: border-box;
+	transform: translateY(100%);
+}
+.van-popup button {
+	outline: none;
+}
+.van-action-sheet__header {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 44px;
+	text-align: center;
+	border-bottom: 1px solid #f8f9fa;
+}
+.van-action-cancel::before {
+	display: block;
+	height: 8px;
+	background-color: #f8f8f8;
+	content: " ";
+}
+.van-icon {
+	display: inline-block;
+	background: url("../images/home/goods/x.png") no-repeat;
+	width: 15px;
+	height: 15px;
+	background-size: 100%;
+	position: absolute;
+	top: 6%;
+	right: 3%;
+	border: 1px solid #969799;
+	border-radius: 100%;
+	line-height: inherit;
+}

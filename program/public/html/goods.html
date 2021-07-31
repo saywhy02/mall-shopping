@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>筛选</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/goods.css" />
+		<script src="../javascripts/axios.js"></script>
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/template-web.js"></script>
+	</head>
+	<body>
+		<div class="page" id="page">
+			<div class="search-top">
+				<div class="search-header">
+					<div class="back" onclick="back()"></div>
+					<div class="search-wrap">
+						<div class="search-icon"></div>
+						<div class="search-text"></div>
+					</div>
+					<div class="screen-btn">筛选</div>
+				</div>
+				<div class="order-main">
+					<div class="order-item">
+						<div class="order-text">
+							综合
+							<div class="order-icon"></div>
+						</div>
+
+						<ul class="order-menu">
+							<li>综合</li>
+							<li>价格从低到高</li>
+							<li>价格从高到低</li>
+						</ul>
+					</div>
+					<div class="order-item">
+						<div class="order-text">销量</div>
+					</div>
+				</div>
+			</div>
+			<div class="goods-main"></div>
+			<div class="mask" style="display: none"></div>
+			<div class="screen" id="screen">
+				<div>
+					<div class="attr">
+						<div class="attr-wrap">
+							<div class="attr-title-wrap">
+								<div class="attr-name">分类</div>
+								<div class="attr-icon"></div>
+							</div>
+							<div class="item-wrap"></div>
+						</div>
+						<div class="attr-wrap">
+							<div class="attr-title-wrap">
+								<div class="attr-name">价格区间</div>
+								<div class="price-wrap">
+									<div class="price-input">
+										<input type="tel" placeholder="最低价" />
+									</div>
+									<div class="price-line"></div>
+									<div class="price-input">
+										<input type="tel" placeholder="最高价" />
+									</div>
+								</div>
+								<div class="attr-icon"></div>
+							</div>
+							<div class="item-wrap">
+								<div class="item">1-50</div>
+								<div class="item">51-99</div>
+								<div class="item">100-300</div>
+								<div class="item">301-1000</div>
+								<div class="item">1001-4000</div>
+								<div class="item">4001-9999</div>
+							</div>
+						</div>
+					</div>
+					<div class="attr">
+						<div class="attr-wrap">
+							<div class="attr-title-wrap">
+								<div class="attr-name">分类</div>
+								<div class="attr-icon"></div>
+							</div>
+							<div class="item-wrap"></div>
+						</div>
+					</div>
+				</div>
+				<div class="handel-wrap">
+					<div class="items lt">共<span class="spn">2</span>件</div>
+					<div class="items in">全部重置</div>
+					<div class="items rg">确定</div>
+				</div>
+			</div>
+			<!-- 搜索 -->
+			<div class="search-component hide">
+				<div class="search-header">
+					<div class="close"></div>
+					<div class="search-wrap">
+						<div class="search-input-wrap">
+							<input type="text" placeholder="请输入宝贝名称" class="search" />
+						</div>
+						<button class="search-btn"></button>
+					</div>
+				</div>
+				<div class="search-main hide">
+					<div class="search-title-wrap">
+						<div class="search-title">最近搜索</div>
+						<div class="bin"></div>
+					</div>
+					<div class="search-keywords-wrap"></div>
+				</div>
+				<div class="search-main top">
+					<div class="search-title-wrap">
+						<div class="search-title">热门搜索</div>
+					</div>
+					<div class="search-keywords-wrap"></div>
+				</div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="van-dialog">
+			<div class="van-dialog__content">
+				<div class="van-dialog__message">确认要删除吗？</div>
+			</div>
+			<div class="van-hairline">
+				<button class="van-button">取消</button>
+				<button class="van-button">确认</button>
+			</div>
+		</div>
+
+		<script id="right" type="text/html">
+			{{each data}}
+			<div class="attr-wrap">
+				<div class="attr-title-wrap">
+					<div class="attr-name">{{$value.title}}</div>
+					<div class="attr-icon"></div>
+				</div>
+				<div class="item-wrap"></div>
+			</div>
+			{{/each}}
+		</script>
+
+		<script src="../javascripts/search.js"></script>
+		<script src="../javascripts/goods.js"></script>
+		<script src="../javascripts/jump.js"></script>
+	</body>
+</html>

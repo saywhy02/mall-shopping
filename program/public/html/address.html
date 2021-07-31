@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>添加收货地址</title>
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<link rel="stylesheet" href="../stylesheets/address.css" />
+		<script src="../javascripts/jquery3.3.1.js"></script>
+	</head>
+	<body>
+		<div class="page">
+			<div class="personal">
+				<i class="back" onclick="back()"></i>
+				<span class="title">添加收货地址</span>
+			</div>
+			<div class="main">
+				<ul>
+					<li>收货人</li>
+					<li><input type="text" placeholder="收货人姓名" class="name" /></li>
+				</ul>
+				<ul>
+					<li>联系方式</li>
+					<li><input type="text" placeholder="联系人手机号" class="cellphone" /></li>
+				</ul>
+				<ul>
+					<li>所在地区</li>
+					<li>
+						<a href="JavaScript:;" id="sel_city"> 请选择所在地区 </a>
+					</li>
+				</ul>
+				<ul>
+					<li>详细地址</li>
+					<li>
+						<input type="text" placeholder="街道详细地址" class="address" />
+					</li>
+				</ul>
+				<ul>
+					<li>设置为默认地址</li>
+					<li><input type="checkbox" class="isdefault" /></li>
+				</ul>
+				<button class="submit-save">保存</button>
+				<span id="prompt"></span>
+			</div>
+		</div>
+		<script src="../javascripts/picker.min.js"></script>
+		<script src="../javascripts/city.js"></script>
+		<script src="../javascripts/address.js"></script>
+		<script src="../javascripts/jump.js"></script>
+	</body>
+</html>

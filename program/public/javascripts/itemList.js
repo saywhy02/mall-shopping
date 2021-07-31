@@ -41,9 +41,7 @@ axios.get("/classify").then((res) => {
                         `;
 						})
 						.join("");
-					var girlList = document.querySelectorAll(
-						".goods-wrap .goods-items-wrap"
-					);
+					var girlList = document.querySelectorAll(".goods-wrap .goods-items-wrap");
 					for (let i = 0; i < res.data.data.length; i++) {
 						if (res.data.data[i].goods == null) {
 							girlList[i].innerHTML = "";
@@ -61,21 +59,13 @@ axios.get("/classify").then((res) => {
 						}
 					}
 					for (let i = 0; i < res.data.data.length; i++) {
-						var intoOfList =
-							girlList[i].querySelectorAll(".into-of-list");
+						var intoOfList = girlList[i].querySelectorAll(".into-of-list");
 						if (res.data.data[i].goods != null) {
-							for (
-								let x = 0;
-								x < res.data.data[i].goods.length;
-								x++
-							) {
+							for (let x = 0; x < res.data.data[i].goods.length; x++) {
 								intoOfList[x].onclick = function () {
 									// console.log(x);
-									localStorage.setItem(
-										"gid",
-										res.data.data[i].goods[x].gid
-									);
-									location.href = "../html/06detail.html";
+									localStorage.setItem("gid", res.data.data[i].goods[x].gid);
+									location.href = "../html/detail.html";
 								};
 							}
 						}

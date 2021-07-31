@@ -1,8 +1,10 @@
+let nick = JSON.parse(localStorage.getItem("nick"));
 function change() {
 	var nickname = document.querySelector(".user-msg .nickname");
 	var btn = document.querySelector(".my-menu-list .btn");
 	if (localStorage.getItem("isLogin") == "true") {
-		nickname.innerHTML = localStorage.getItem("nickname");
+		nickname.innerHTML = nick[2];
+		$(".user-msg .head-pic img").attr("src", nick[4]);
 		btn.innerHTML = "安全退出";
 	} else {
 		btn.innerHTML = "登录/注册";
@@ -31,13 +33,13 @@ function logout() {
 					$(".overlay").hide();
 					$(".van-dialog").hide();
 					textTip("登出中。。。", 1000, function () {
-						localStorage.setItem("isLogin", false, 30);
-						localStorage.removeItem("nickname");
+						localStorage.setItem("isLogin", false);
+						localStorage.removeItem("nick");
 						change();
 					});
 				});
 		} else {
-			jump("../html/03login.html");
+			jump("../html/login.html");
 		}
 	};
 	change();
@@ -50,21 +52,68 @@ function order() {
 	show.onclick = () => {
 		if (localStorage.getItem("isLogin") == "true") {
 			localStorage.setItem("f", 0);
-			jump("../html/05order.html#status=all");
+			jump("../html/order.html#status=all");
 		} else {
-			jump("../html/03login.html");
+			jump("../html/login.html");
 		}
 	};
 	for (let f = 0; f < item.length; f++) {
 		item[f].onclick = function () {
 			if (localStorage.getItem("isLogin") == "true") {
 				localStorage.setItem("f", f + 1);
-				jump("../html/05order.html#status=" + f);
+				jump("../html/order.html#status=" + f);
 			} else {
 				localStorage.removeItem("f");
-				jump("../html/03login.html");
+				jump("../html/login.html");
 			}
 		};
 	}
 }
 order();
+$(".my-menu-list").each(function () {
+	$(".list")
+		.eq(0)
+		.click(function () {
+			if (localStorage.getItem("isLogin") == "true") {
+				jump("../html/profile.html");
+			} else {
+				jump("../html/login.html");
+			}
+		});
+	$(".list")
+		.eq(1)
+		.click(function () {
+			if (localStorage.getItem("isLogin") == "true") {
+				jump("../html/choose.html");
+			} else {
+				jump("../html/login.html");
+			}
+		});
+	$(".list")
+		.eq(2)
+		.click(function () {
+			if (localStorage.getItem("isLogin") == "true") {
+				jump("../html/bind.html");
+			} else {
+				jump("../html/login.html");
+			}
+		});
+	$(".list")
+		.eq(3)
+		.click(function () {
+			if (localStorage.getItem("isLogin") == "true") {
+				jump("../html/profile.html");
+			} else {
+				jump("../html/login.html");
+			}
+		});
+	$(".list")
+		.eq(4)
+		.click(function () {
+			if (localStorage.getItem("isLogin") == "true") {
+				jump("../html/profile.html");
+			} else {
+				jump("../html/login.html");
+			}
+		});
+});

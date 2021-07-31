@@ -33,9 +33,13 @@ $(function () {
 					textTip(data.data);
 				} else {
 					localStorage.setItem("isLogin", true);
-					localStorage.setItem("nickname", data.data.nickname);
-					textTip("欢迎回来", 2000, function () {
-						jump("../html/01index.html");
+					let nick = [];
+					nick.push(data.data.auth_token);
+					nick.push(data.data.uid);
+					nick.push(data.data.nickname);
+					localStorage.setItem("nick", JSON.stringify(nick));
+					textTip("欢迎回来," + data.data.nickname, 2000, function () {
+						jump("../html/index.html");
 					});
 				}
 			},

@@ -17,6 +17,9 @@ html {
 body {
 	font-size: 1.4rem;
 }
+a {
+	color: #666;
+}
 html,
 body {
 	min-height: 100%;
