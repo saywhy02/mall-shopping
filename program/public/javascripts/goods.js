@@ -6,7 +6,6 @@ $(function () {
 		method: "GET",
 		url: "http://vueshop.glbuys.com/api/home/public/hotwords?token=1ec949a15fb709370f",
 	}).then((res) => {
-		console.log(res.data);
 		$(".search-keywords-wrap:eq(1)").html(
 			res.data.data.map((v, i) => {
 				return `<div class="keywords">${v.title}</div>`;
@@ -18,7 +17,7 @@ $(function () {
 					`<div class="keywords">${res.data.data[index].title}</div>`
 				);
 				let searchFor = $(".search-keywords-wrap:eq(1) .keywords").eq(index).html();
-				localStorage.setItem("searchFor", searchFor);
+				localStorage.setItem("kword", searchFor);
 				nameData1(searchFor);
 				nameData2(searchFor);
 				$(".search-component").hide();
@@ -26,12 +25,11 @@ $(function () {
 		});
 	});
 	var goodsMain = document.querySelector(".goods-main");
-	let searchFor = localStorage.getItem("searchFor");
+	let searchFor = localStorage.getItem("kword");
 	nameData1(searchFor);
 	nameData2(searchFor);
 	function nameData1(code) {
-		searchFor = localStorage.getItem("searchFor");
-		goodsMain.innerHTML = "";
+		searchFor = localStorage.getItem("kword");
 		axios({
 			method: "GET",
 			url:
@@ -39,17 +37,19 @@ $(function () {
 				code +
 				"&otype=all&token=1ec949a15fb709370f",
 		}).then((res) => {
-			for (let j = 0; j < res.data.pageinfo.pagenum; j++) {
-				axios
-					.get(
-						"http://vueshop.glbuys.com/api/home/goods/search?kwords=" +
-							code +
-							"&otype=all&token=1ec949a15fb709370f&page=" +
-							(j + 1)
-					)
-					.then((response) => {
-						goodsMain.innerHTML += response.data.data.map((v, i) => {
-							return `
+			goodsMain.innerHTML = "";
+			if (res.data.code == 200) {
+				for (let j = 0; j < res.data.pageinfo.pagenum; j++) {
+					axios
+						.get(
+							"http://vueshop.glbuys.com/api/home/goods/search?kwords=" +
+								code +
+								"&otype=all&token=1ec949a15fb709370f&page=" +
+								(j + 1)
+						)
+						.then((response) => {
+							goodsMain.innerHTML += response.data.data.map((v, i) => {
+								return `
                             <div class="goods-list">
                                 <div class="image">
                                     <img src="${v.image}" alt="">
@@ -63,15 +63,20 @@ $(function () {
                                     </div>
                                 </div>
                             </div>`;
-						});
-						$(".search-text").html(code);
-						$(".goods-list").each(function (i) {
-							$(this).click(() => {
-								jump("../html/detail.html");
-								localStorage.setItem("gid", res.data.data[i].gid);
+							});
+							$(".search-text").html(code);
+							$(".goods-list").each(function (i) {
+								$(this).click(() => {
+									jump("../html/detail.html");
+									localStorage.setItem("gid", res.data.data[i].gid);
+								});
 							});
 						});
-					});
+				}
+			} else {
+				goodsMain.innerHTML = `
+                <div class="no-data">没有相关商品！</div>
+                `;
 			}
 		});
 	}
@@ -213,7 +218,6 @@ $(function () {
 		method: "GET",
 		url: "http://vueshop.glbuys.com/api/home/category/menu?token=1ec949a15fb709370f",
 	}).then((res) => {
-		console.log(res.data);
 		$(".item-wrap:eq(0)").html(
 			res.data.data.map((v, i) => {
 				return `<div class="item">${v.title}</div>`;
@@ -239,7 +243,7 @@ $(function () {
 		}
 	});
 	function nameData2(code) {
-		searchFor = localStorage.getItem("searchFor");
+		searchFor = localStorage.getItem("kword");
 		axios({
 			method: "GET",
 			url:

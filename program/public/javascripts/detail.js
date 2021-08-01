@@ -227,7 +227,33 @@ $(".cart").click(function () {
 });
 
 // 收藏
-
+var a = window.localStorage.getItem("gid");
+console.log(a);
+$(".fav").click(() => {
+	collect(nick[1], a);
+});
+let nick = JSON.parse(localStorage.getItem("nick"));
+console.log(nick);
+function collect(nick, code) {
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url:
+			"http://vueshop.glbuys.com/api/goods/fav?uid=" +
+			nick +
+			"&gid=" +
+			code +
+			"&token=1ec949a15fb709370f",
+		success: function (data) {
+			if (data.code == 302) {
+				console.log(data);
+				textTip(data.data);
+			} else {
+				textTip(data.data);
+			}
+		},
+	});
+}
 // 关闭
 $(".close").click(function () {
 	$(".overlay").hide();

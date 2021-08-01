@@ -57,7 +57,7 @@ $(function () {
 						aidData.push(data.data[i].aid);
 						console.log(aidData);
 						localStorage.setItem("Aid", JSON.stringify(aidData));
-						jump("../html/");
+						jump("../html/changeAdd.html");
 					});
 			});
 		},

@@ -44,10 +44,33 @@
 		var reader = new FileReader(); //新建fileReader对象
 		reader.readAsDataURL(file);
 		reader.onloadend = function () {
-			//图片加载事件
 			var dataUrl = reader.result;
 			$(".head img").attr("src", dataUrl);
 		};
+		// $.ajax({
+		// 	type: "POST",
+		// 	dataType: "json",
+		// 	url: "http://vueshop.glbuys.com/api/user/myinfo/formdatahead?token=1ec949a15fb709370f",
+		// 	data: {
+		// 		headfile: $(".head img").attr("src"),
+		// 	},
+		// 	success: function (data) {
+		// 		console.log(data.data);
+		// 		console.log($(".head img").attr("src"));
+		// 	},
+		// });
+		// $.ajax({
+		// 	type: "POST",
+		// 	dataType: "json",
+		// 	url: "http://vueshop.glbuys.com/api/user/myinfo/savehead?token=386777c139fd9e2ac5",
+		// 	data: {
+		// 		uid: nick[1],
+		// 		head: $(".head img").attr("src"),
+		// 	},
+		// 	success: function (data) {
+		// 		console.log(data.data);
+		// 	},
+		// });
 	});
 	$(".gender").click(() => {
 		$(".van-popup").css("transform", "translateY(0px)");

@@ -7,6 +7,7 @@ function change() {
 		$(".user-msg .head-pic img").attr("src", nick[4]);
 		btn.innerHTML = "安全退出";
 	} else {
+		$(".user-msg .head-pic img").attr("src", "../images/user/my/default-head.png");
 		btn.innerHTML = "登录/注册";
 		nickname.innerHTML = "昵称";
 	}
@@ -32,9 +33,14 @@ function logout() {
 				.click(function () {
 					$(".overlay").hide();
 					$(".van-dialog").hide();
+
 					textTip("登出中。。。", 1000, function () {
 						localStorage.setItem("isLogin", false);
 						localStorage.removeItem("nick");
+						$(".user-msg .head-pic img").attr(
+							"src",
+							"../images/user/my/default-head.png"
+						);
 						change();
 					});
 				});
@@ -102,7 +108,7 @@ $(".my-menu-list").each(function () {
 		.eq(3)
 		.click(function () {
 			if (localStorage.getItem("isLogin") == "true") {
-				jump("../html/profile.html");
+				jump("../html/changePSW.html");
 			} else {
 				jump("../html/login.html");
 			}
@@ -111,7 +117,7 @@ $(".my-menu-list").each(function () {
 		.eq(4)
 		.click(function () {
 			if (localStorage.getItem("isLogin") == "true") {
-				jump("../html/profile.html");
+				jump("../html/collection.html");
 			} else {
 				jump("../html/login.html");
 			}

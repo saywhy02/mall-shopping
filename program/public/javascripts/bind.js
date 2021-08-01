@@ -18,7 +18,6 @@ $(function () {
 			},
 			success: function (data) {
 				if (data.code == 302) {
-					console.log(data);
 					textTip(data.data, 2000);
 				} else {
 					textTip(data.data, 2000);

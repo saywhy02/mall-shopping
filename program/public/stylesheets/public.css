@@ -3,7 +3,8 @@
 	padding: 0px;
 }
 ul,
-li {
+li,
+a {
 	list-style-type: none;
 }
 input {
@@ -19,6 +20,7 @@ body {
 }
 a {
 	color: #666;
+	text-decoration: none;
 }
 html,
 body {

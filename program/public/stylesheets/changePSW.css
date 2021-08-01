@@ -1,0 +1,111 @@
+.personal {
+	width: 100%;
+	height: 7vh;
+	background-color: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #efefef;
+	position: fixed;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	justify-content: space-between;
+	padding: 0 0.1rem;
+	box-sizing: border-box;
+}
+
+.personal .title {
+	width: 79%;
+	height: auto;
+	font-size: 2.4vh;
+	text-align: center;
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.personal .back {
+	display: inline-block;
+	width: 6vh;
+	height: 6vh;
+	background: url("../images/home/goods/back.png") no-repeat;
+	background-size: 100%;
+	background-position: 50%;
+}
+
+.psw {
+	width: 93%;
+	height: 6vh;
+	border: 1px solid #c5cbcf;
+	border-radius: 4px;
+	margin: 9vh auto 1vh;
+	overflow: hidden;
+	display: flex;
+	position: relative;
+}
+
+.psw input {
+	color: inherit;
+	font: inherit;
+	border: 0 none;
+	border-radius: 0;
+	outline: none;
+}
+
+.psw .password {
+	width: 75%;
+	height: 75%;
+	margin-left: 1.5vh;
+	margin-top: 0.5vh;
+	font-size: 2vh;
+}
+
+.save-btn {
+	width: 93%;
+	height: 6vh;
+	background-color: #e42321;
+	font-size: 2vh;
+	color: #fff;
+	text-align: center;
+	line-height: 6vh;
+	margin: 0 auto;
+	border-radius: 4px;
+}
+
+.switch {
+	width: 20%;
+	height: 100%;
+}
+.switch-van {
+	width: 6.2rem;
+	height: 3.2rem;
+	border: 1px solid #0000002a;
+	border-radius: 5rem;
+	margin-top: 0.4rem;
+	position: relative;
+	display: inline-block;
+	font-size: 3rem;
+}
+.switch-van .node {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* right: 0; */
+	width: 3.2rem;
+	z-index: 1;
+	height: 3.2rem;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px 0 #000;
+	background-color: #fff;
+	transition: 0.3s;
+}
+.switch-van .on {
+	transform: translateX(3rem);
+	transition: 0.3s;
+	box-shadow: 0 0px 3px 0 #ff0000;
+}

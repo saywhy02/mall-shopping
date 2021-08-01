@@ -1,14 +1,29 @@
 $(function () {
-	$("#prompt").css({
-		left: ($(window).width() - $("#prompt").outerWidth()) / 2.8,
-		top: ($(window).height() - $("#prompt").outerHeight()) / 2,
-	});
 	let nick = JSON.parse(localStorage.getItem("nick"));
-	console.log(nick);
 
 	$(".submit-save").click(() => {
 		address();
 	});
+    
+	function deLete() {
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			url:
+				"http://vueshop.glbuys.com/api/user/address/del?uid=" +
+				oAid[0] +
+				"&aid=" +
+				oAid[1] +
+				"&token=1ec949a15fb709370f",
+			success: function (data) {
+				console.log(data);
+				$("#prompt").html(data.data).show();
+				setTimeout(function () {
+					$(location).prop("href", "http://localhost:3000/my/address.html");
+				}, 2000);
+			},
+		});
+	}
 	function address() {
 		let cked = null;
 		if ($(".isdefault").prop("checked") == true) {
@@ -18,7 +33,6 @@ $(function () {
 		}
 		let srr = $("#sel_city").html();
 		srr = srr.split(" ");
-		console.log(srr);
 		$.ajax({
 			type: "POST",
 			dataType: "json",
@@ -35,12 +49,15 @@ $(function () {
 			},
 			success: function (data) {
 				console.log(data);
-				$("#prompt").html(data.data).show();
+				if (data.code == 303) {
+					textTip(data.data);
+				} else {
+					textTip("添加成功！", 2000, function () {
+						jump("../html/choose.html");
+					});
+				}
 			},
 		});
-		setTimeout(() => {
-			$("#prompt").hide();
-		}, 2000);
 	}
 });
 var nameEl = document.getElementById("sel_city");
