@@ -1,0 +1,101 @@
+.main {
+	width: 100%;
+	padding-top: 4.5rem;
+	background-color: #fff;
+	margin-bottom: 2rem;
+}
+.main .order-list {
+	width: 100%;
+	height: auto;
+}
+.main .order-list .ordernum-wrap {
+	width: 96%;
+	height: 4rem;
+	border-bottom: 1px solid #efefef;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 2%;
+	padding-right: 2%;
+	align-items: center;
+}
+.main .order-list .ordernum-wrap .ordernum {
+	width: auto;
+	height: auto;
+}
+.main .order-list .ordernum-wrap .status {
+	width: auto;
+	height: auto;
+}
+.main .order-list .item-list {
+	width: 100%;
+	height: 8rem;
+	border-bottom: 1px solid #efefef;
+	position: relative;
+	z-index: 1;
+}
+.main .order-list .item-list .image {
+	width: 6rem;
+	height: 6rem;
+	position: absolute;
+	z-index: 1;
+	left: 2%;
+	top: 1rem;
+}
+.main .order-list .item-list .image img {
+	width: 100%;
+	height: 100%;
+}
+.main .order-list .item-list .title {
+	width: 72%;
+	height: auto;
+	position: absolute;
+	z-index: 1;
+	left: 22%;
+	top: 1rem;
+}
+.main .order-list .item-list .amount {
+	position: absolute;
+	z-index: 1;
+	right: 2%;
+	bottom: 1rem;
+	font-size: 1.2rem;
+	color: #909090;
+}
+.main .order-list .item-list .status-btn {
+	font-size: 1.2rem;
+	width: 6.2rem;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	text-align: center;
+	border: 1px solid #f15353;
+	border-radius: 4px;
+	position: absolute;
+	z-index: 1;
+	right: 2%;
+	bottom: 1rem;
+}
+.main .order-list .total-wrap {
+	width: 96%;
+	height: 4rem;
+	border-bottom: 1px solid #f17f1f;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.main .order-list .total-wrap .status-wrap {
+	display: flex;
+	width: auto;
+	justify-content: flex-end;
+}
+.main .order-list .total-wrap .status-wrap .status-btn {
+	font-size: 1.2rem;
+	width: 6.2rem;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	text-align: center;
+	border: 1px solid #f15353;
+	border-radius: 4px;
+	margin-left: 1rem;
+}

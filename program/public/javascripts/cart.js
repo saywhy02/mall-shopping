@@ -93,7 +93,7 @@ $(function () {
 					temp = !temp;
 				} else {
 					$(this).addClass("active");
-					$("#freight").html("￥" + Math.min.apply(null, freight));
+					$("#freight").html("￥" + Math.max.apply(null, freight));
 					temp = !temp;
 				}
 				totals();
@@ -107,7 +107,7 @@ $(function () {
 				} else {
 					$(".chose-btn").addClass("active");
 					$(".select-btn").addClass("active");
-					$("#freight").html("￥" + Math.min.apply(null, freight));
+					$("#freight").html("￥" + Math.max.apply(null, freight));
 					temp = !temp;
 				}
 				totals();
@@ -128,12 +128,54 @@ $(function () {
 				});
 			$(".settlement-btn").click(() => {
 				if (!$(".settlement-btn").hasClass("disable")) {
-					jump();
+					if (localStorage.getItem("isLogin") == "true") {
+						Settlement();
+						jump("../html/sure.html");
+					} else {
+						jump("../html/login.html");
+					}
 				}
 			});
 		});
+
+		$.ajax({
+			type: "post",
+			url: "http://vueshop.glbuys.com/api/home/user/safe?token=1ec949a15fb709370f",
+			data: {
+				uid: nick[1],
+				auth_token: nick[0],
+			},
+			success: function (data) {
+				console.log(data);
+			},
+		});
 	}
 });
+function Settlement() {
+	var cartData = JSON.parse(localStorage.getItem("cartData"));
+	let arr = [];
+	$(".select-btn.active").each((i) => {
+		var value = Object.values(cartData[i]);
+		let mu = [];
+		mu.push(cartData[i].gid);
+		mu.push(
+			$(".select-btn.active")
+				.eq(i)
+				.parents(".cart-list")
+				.children(".goods-wrap")
+				.children(".buy-wrap")
+				.children(".amount-input-wrap")
+				.children(".amount-input")
+				.children("input")
+				.val()
+		);
+		mu.push(value[5]);
+		mu.push(value[6]);
+		arr.push(mu);
+	});
+	console.log(arr);
+	window.localStorage.setItem("buy", JSON.stringify(arr));
+}
 function totals() {
 	let bss = 0;
 	if (!$(".select-btn").hasClass("active")) {
@@ -157,6 +199,6 @@ function totals() {
 		});
 		$(".settlement-btn").removeClass("disable");
 		$("#settlement").html("￥" + bss.toFixed(1));
-		$("#freight").html("￥" + Math.min.apply(null, freight));
+		$("#freight").html("￥" + Math.max.apply(null, freight));
 	}
 }

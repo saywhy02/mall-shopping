@@ -1,9 +1,9 @@
 $(function () {
+	// 右上角删除
 	$(".right-btn").click(() => {
 		deLete();
 	});
 	let oAid = JSON.parse(localStorage.getItem("Aid"));
-	console.log(oAid);
 	$.ajaxSettings.async = false;
 	$.ajax({
 		type: "GET",
@@ -15,7 +15,6 @@ $(function () {
 			oAid[1] +
 			"&token=1ec949a15fb709370f",
 		success: function (data) {
-			console.log(data);
 			$(".main").html(`
             <ul>
                 <li>收货人</li>
@@ -29,7 +28,7 @@ $(function () {
                 <li>所在地区</li>
                 <li>
                     <a href="JavaScript:;" id="sel_city">
-                        ${data.data.province} ${data.data.city} ${data.data.address}
+                        ${data.data.province} ${data.data.city} ${data.data.area}
                     </a>
                 </li>
             </ul>
@@ -44,7 +43,6 @@ $(function () {
                 <li><input type="checkbox" class="isdefault"></li>
             </ul>
             <button class="submit-save">修改</button>
-            <span id="prompt"></span>
             `);
 		},
 	});

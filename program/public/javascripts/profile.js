@@ -29,7 +29,7 @@
 				nick[4] = $(".head img").attr("src");
 				localStorage.setItem("nick", JSON.stringify(nick));
 				textTip(data.data, 2000, function () {
-					// jump("../html/index.html");
+					back();
 				});
 			},
 		});

@@ -1,30 +1,14 @@
 $(function () {
+	// 用户信息
 	let nick = JSON.parse(localStorage.getItem("nick"));
 
+	// 保存按钮
 	$(".submit-save").click(() => {
 		address();
 	});
-    
-	function deLete() {
-		$.ajax({
-			type: "GET",
-			dataType: "json",
-			url:
-				"http://vueshop.glbuys.com/api/user/address/del?uid=" +
-				oAid[0] +
-				"&aid=" +
-				oAid[1] +
-				"&token=1ec949a15fb709370f",
-			success: function (data) {
-				console.log(data);
-				$("#prompt").html(data.data).show();
-				setTimeout(function () {
-					$(location).prop("href", "http://localhost:3000/my/address.html");
-				}, 2000);
-			},
-		});
-	}
+	// 添加地址
 	function address() {
+		// 默认
 		let cked = null;
 		if ($(".isdefault").prop("checked") == true) {
 			cked = 1;
@@ -33,30 +17,35 @@ $(function () {
 		}
 		let srr = $("#sel_city").html();
 		srr = srr.split(" ");
-		$.ajax({
-			type: "POST",
-			dataType: "json",
+		console.log(srr);
+		axios({
+			method: "POST",
 			url: "http://vueshop.glbuys.com/api/user/address/add?token=1ec949a15fb709370f",
-			data: {
-				uid: nick[1],
-				name: $(".name").val(),
-				cellphone: $(".cellphone").val(),
-				province: srr[0],
-				city: srr[1],
-				area: srr[2],
-				address: $(".address").val(),
-				isdefault: cked,
-			},
-			success: function (data) {
-				console.log(data);
-				if (data.code == 303) {
-					textTip(data.data);
-				} else {
-					textTip("添加成功！", 2000, function () {
-						jump("../html/choose.html");
-					});
-				}
-			},
+			data:
+				"uid=" +
+				nick[1] +
+				"&name=" +
+				$(".name").val() +
+				"&cellphone=" +
+				$(".cellphone").val() +
+				"&province=" +
+				srr[0] +
+				"&city=" +
+				srr[1] +
+				"&area=" +
+				srr[2] +
+				"&address=" +
+				$(".address").val() +
+				"&isdefault=" +
+				cked,
+		}).then((res) => {
+			if (res.data.code == 303) {
+				textTip(res.data.data);
+			} else {
+				textTip("添加成功！", 2000, function () {
+					back();
+				});
+			}
 		});
 	}
 });

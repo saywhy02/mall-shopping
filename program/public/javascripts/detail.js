@@ -229,8 +229,13 @@ $(".cart").click(function () {
 // 收藏
 var a = window.localStorage.getItem("gid");
 console.log(a);
+
 $(".fav").click(() => {
-	collect(nick[1], a);
+	if (localStorage.getItem("nick") != null) {
+		collect(nick[1], a);
+	} else {
+		textTip("请登录会员", 1000);
+	}
 });
 let nick = JSON.parse(localStorage.getItem("nick"));
 console.log(nick);
@@ -300,8 +305,11 @@ $(".sure-btn").click(function () {
 		console.log(333);
 		textTip("请选择" + sttr[2], 1000);
 	} else {
-		textTip("加入购物车成功", 1000);
 		$(".cart-icon .dot").show();
+		textTip("加入购物车成功", 1000, function () {
+			$(".overlay").hide();
+			$(".cart-panel").removeClass("up").addClass("down");
+		});
 
 		let attrs = [];
 		if ("cartData" in localStorage) {

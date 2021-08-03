@@ -7,6 +7,9 @@
 		<title>商品</title>
 		<link rel="stylesheet" href="../stylesheets/public.css" />
 		<link rel="stylesheet" href="../stylesheets/order.css" />
+		<link rel="stylesheet" href="../stylesheets/orderList.css" />
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/axios.js"></script>
 	</head>
 	<body>
 		<div class="page">
@@ -20,6 +23,17 @@
 				<li>待收货</li>
 				<li>待评价</li>
 			</ul>
+			<div class="main"></div>
+			<div class="overlay"></div>
+			<div class="van-dialog">
+				<div class="van-dialog__content">
+					<div class="van-dialog__message">确认要取消吗？</div>
+				</div>
+				<div class="van-hairline">
+					<button class="van-button">取消</button>
+					<button class="van-button">确认</button>
+				</div>
+			</div>
 		</div>
 		<script src="../javascripts/order.js"></script>
 		<script src="../javascripts/jump.js"></script>

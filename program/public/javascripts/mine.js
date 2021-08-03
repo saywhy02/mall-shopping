@@ -3,6 +3,7 @@ function change() {
 	var nickname = document.querySelector(".user-msg .nickname");
 	var btn = document.querySelector(".my-menu-list .btn");
 	if (localStorage.getItem("isLogin") == "true") {
+		axios.post("");
 		nickname.innerHTML = nick[2];
 		$(".user-msg .head-pic img").attr("src", nick[4]);
 		btn.innerHTML = "安全退出";
@@ -33,15 +34,16 @@ function logout() {
 				.click(function () {
 					$(".overlay").hide();
 					$(".van-dialog").hide();
-
 					textTip("登出中。。。", 1000, function () {
 						localStorage.setItem("isLogin", false);
 						localStorage.removeItem("nick");
+						localStorage.removeItem("cartData");
 						$(".user-msg .head-pic img").attr(
 							"src",
 							"../images/user/my/default-head.png"
 						);
 						change();
+						location.reload();
 					});
 				});
 		} else {
@@ -69,7 +71,7 @@ function order() {
 				localStorage.setItem("f", f + 1);
 				jump("../html/order.html#status=" + f);
 			} else {
-				localStorage.removeItem("f");
+				// localStorage.removeItem("f");
 				jump("../html/login.html");
 			}
 		};

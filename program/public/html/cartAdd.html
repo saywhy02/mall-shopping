@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>选择收货地址</title>
+		<link rel="stylesheet" href="../stylesheets/cartAdd.css" />
+		<link rel="stylesheet" href="../stylesheets/public.css" />
+		<script src="../javascripts/jquery3.3.1.js"></script>
+		<script src="../javascripts/axios.js"></script>
+	</head>
+
+	<body>
+		<div class="page">
+			<div class="header">
+				<div class="back" onclick="back()"></div>
+				<div class="title">选择收货地址</div>
+			</div>
+			<div class="main">
+				<div class="address-nav">
+					<div class="address-nav-name-1">配送地址</div>
+					<div class="address-nav-name-2">+添加收货地址</div>
+				</div>
+				<div class="box"></div>
+				<div class="no-data">您还没有添加收货地址！</div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="van-dialog">
+			<div class="van-dialog__content">
+				<div class="van-dialog__message">确认要删除吗？</div>
+			</div>
+			<div class="van-hairline">
+				<button class="van-button">取消</button>
+				<button class="van-button">确认</button>
+			</div>
+		</div>
+		<script src="../javascripts/cartAdd.js"></script>
+		<script src="../javascripts/jump.js"></script>
+	</body>
+</html>

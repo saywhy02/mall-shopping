@@ -29,21 +29,12 @@
 	transform: translate(-50%, -50%);
 }
 
-.personal .back {
-	display: inline-block;
-	width: 6vh;
-	height: 6vh;
-	background: url("../images/home/goods/back.png") no-repeat;
-	background-size: 100%;
-	background-position: 50%;
-}
-
 .psw {
 	width: 93%;
 	height: 6vh;
 	border: 1px solid #c5cbcf;
 	border-radius: 4px;
-	margin: 9vh auto 1vh;
+	margin: 0vh auto 1vh;
 	overflow: hidden;
 	display: flex;
 	position: relative;

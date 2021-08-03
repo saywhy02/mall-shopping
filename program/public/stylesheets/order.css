@@ -32,6 +32,7 @@ ul {
 	top: 5.1rem;
 	display: flex;
 	border-bottom: 1px solid #dcdcdc;
+	background-color: #fff;
 }
 ul li {
 	width: 25%;

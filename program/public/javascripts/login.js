@@ -39,7 +39,7 @@ $(function () {
 					nick.push(data.data.nickname);
 					localStorage.setItem("nick", JSON.stringify(nick));
 					textTip("欢迎回来," + data.data.nickname, 2000, function () {
-						jump("../html/index.html");
+						back();
 					});
 				}
 			},

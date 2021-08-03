@@ -24,7 +24,7 @@
 }
 .login-main {
 	width: 100%;
-	padding-top: 7rem;
+	padding-top: 2rem;
 }
 .tel,
 .psw {
@@ -106,7 +106,7 @@
 	margin: 0 auto;
 	margin-top: 1.5rem;
 }
-.fastHelp img{
+.fastHelp img {
 	width: 1.6rem;
 	height: 1.6rem;
 	vertical-align: middle;
